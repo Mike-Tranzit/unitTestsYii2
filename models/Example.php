@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\web\ServerErrorHttpException;
 
 /**
  * 
@@ -15,7 +16,8 @@ class Example extends Model
     public $plate;
     public $stevedore;
     public $trader;
-    public $fio;
+    public $name;
+    public $phone;
 
 
     public function rules()
@@ -24,17 +26,28 @@ class Example extends Model
             [['plate'], 'required', 'when' => function($model) {
                 return $model->stevedore == 1;
             }],
-            ['plate', 'string', 'max' => 3],
+            ['plate', 'string', 'max' => 8],
             ['stevedore', 'integer'],
             ['trader', 'default' , 'value' => 1],
-            ['fio', 'validateFio'],
+            ['phone', 'filter', 'filter' => function ($value) {
+                return '+7918' . $value;
+            }],
+            ['name', 'required'],
+            ['name', 'validateName'],
+            ['name', 'unique', 'targetClass' => '\app\models\base\Users', 'message' => '–¢–∞–∫–æ–µ –∏–º—è —É–∂–µ —Å—É—â–µ—Å—Ç–≤—É–µ—Ç'],
         ];
     }
 
-    public function validateFio($attribute, $params)
+    public function validateName($attribute, $params)
     {
-        if(!in_array($this->$attribute, ['»‚‡ÌÓ‚'])) {
-            $this->addError($attribute, '‘‡ÏËÎËˇ ‰ÓÎÊÌ‡ ·˚Ú¸ ÚÓÎ¸ÍÓ »‚‡ÌÓ‚');
+        if(in_array($this->$attribute, ['–ü–µ—Ç—Ä–æ–≤'])) {
+            $this->addError($attribute, '–§–∞–º–∏–ª–∏—è –Ω–µ –¥–æ–ª–∂–Ω–∞ –±—ã—Ç—å –ü–µ—Ç—Ä–æ–≤');
         }
+    }
+
+    public function Send($layout = null)
+    {
+        if(!$layout) throw new ServerErrorHttpException('Layout is required');
+        return 'Send is success';
     }
 }

@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `roles`.
  */
-class m181011_125147_create_roles_table extends Migration
+class m181009_182049_create_roles_table extends Migration
 {
     /**
      * {@inheritdoc}

@@ -4,8 +4,8 @@ use yii\db\Migration;
 
 /**
  * Handles the creation of table `users`.
- */
-class m181009_182049_create_users_table extends Migration
+ */ 
+class m181011_125147_create_users_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -62,12 +62,12 @@ class m181009_182049_create_users_table extends Migration
             );
         }
 
-        $this->batchInsert('users',
-            ['name','description', 'deleted', 'updated_at', 'arrived','loadingDate','role_id'],
-            [
-                ['name', 'description', 1, date("Y-m-d H:i:s"), 0, date("Y-m-d H:i:s"), 10]
-            ]
-        );
+        // $this->batchInsert('users',
+        //     ['name','description', 'deleted', 'updated_at', 'arrived','loadingDate','role_id'],
+        //     [
+        //         ['name', 'description', 1, date("Y-m-d H:i:s"), 0, date("Y-m-d H:i:s"), 10]
+        //     ]
+        // );
     }
     
     /**
@@ -79,7 +79,7 @@ class m181009_182049_create_users_table extends Migration
      */
     public function checkForeignKeyExist(string $foreignKey)
     {
-        return ($this->tableSchema['foreignKeys'] && array_key_exists($foreignKey, $this->tableSchema['foreignKeys']));
+        return ($this->db->tablePrefix . 'roles' !== null && $this->tableSchema && array_key_exists($foreignKey, $this->tableSchema['foreignKeys']));
     }
 
     /**

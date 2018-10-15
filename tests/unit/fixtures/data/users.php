@@ -3,7 +3,7 @@ $faker = Faker\Factory::create();
 return [
     [
         'id' => 1,
-        'name' => $faker->name,
+        'name' => 'Devyatov',
         'description' => $faker->address,
         'deleted' => 0,
         'updated_at' => $faker->date().' '.$faker->time(),
