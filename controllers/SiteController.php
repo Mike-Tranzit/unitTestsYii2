@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\base\Usernames;
 
 class SiteController extends Controller
 {
@@ -62,6 +63,22 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionExample()
+    {
+
+        $model = new Usernames();
+        if($model->load(\Yii::$app->request->post())){
+            var_dump(\Yii::$app->request->post());
+            var_dump($model);
+        }
+        return $this->render('example', compact('model'));
     }
 
     /**

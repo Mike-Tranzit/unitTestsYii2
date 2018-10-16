@@ -66,6 +66,9 @@ class UsersTest extends \Codeception\Test\Unit
         ];
     }
 
+    /**
+     * @group future
+     */
     public function testFixtureInUsers()
     {
         $user = $this->tester->grabFixture('users', 0);

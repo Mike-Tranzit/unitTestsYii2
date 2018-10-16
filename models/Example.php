@@ -19,7 +19,6 @@ class Example extends Model
     public $name;
     public $phone;
 
-
     public function rules()
     {
         return [
