@@ -5,10 +5,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
 <?php $form = ActiveForm::begin(['id' => 'registration-form']) ?>
-    <?= $form->field($model, 'username') ?>
+
+    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
     <?= $form->field($model, 'email') ?>
     <?= $form->field($model, 'skype') ?>
     <?= $form->field($model, 'phone') ?>
-    <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-success']) ?>
+    <?= Html::submitButton('Submit', ['class' => 'btn btn-success', 'name' => 'registration-button']) ?>
 <?php ActiveForm::end() ?>
 </div>

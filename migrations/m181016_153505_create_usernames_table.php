@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `username`.
+ * Handles the creation of table `usernames`.
  */
 class m181016_153505_create_usernames_table extends Migration
 {
@@ -26,6 +26,6 @@ class m181016_153505_create_usernames_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('username');
+        $this->dropTable('usernames');
     }
 }

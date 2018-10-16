@@ -74,11 +74,13 @@ class SiteController extends Controller
     {
 
         $model = new Usernames();
-        if($model->load(\Yii::$app->request->post())){
-            var_dump(\Yii::$app->request->post());
-            var_dump($model);
+        if($model->load(Yii::$app->request->post())){
+            //var_dump(\Yii::$app->request->post());
+            //var_dump($model);
         }
-        return $this->render('example', compact('model'));
+        return $this->render('example', [
+            'model' => $model,
+        ]);
     }
 
     /**

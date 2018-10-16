@@ -13,11 +13,6 @@ use yii\web\ServerErrorHttpException;
  */
 class Example extends Model
 {
-    public $plate;
-    public $stevedore;
-    public $trader;
-    public $name;
-    public $phone;
 
     public function rules()
     {
