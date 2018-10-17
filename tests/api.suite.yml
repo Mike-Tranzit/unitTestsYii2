@@ -1,0 +1,10 @@
+class_name: ApiTester
+modules:
+    enabled:
+        - Asserts
+        - ApiHelper
+        - REST:
+            url: /
+            depends: Yii2
+    config:
+        - Yii2

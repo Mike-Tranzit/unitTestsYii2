@@ -4,8 +4,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
-<?php $form = ActiveForm::begin(['id' => 'registration-form']) ?>
-
+<?php var_dump($model->errors);?>
+<?php $form = ActiveForm::begin(['id' => 'registration-form']);?>
     <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
     <?= $form->field($model, 'email') ?>
     <?= $form->field($model, 'skype') ?>

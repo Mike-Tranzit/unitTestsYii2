@@ -13,11 +13,14 @@ use app\models\base\Usernames;
 
 class SiteController extends Controller
 {
+
+    public $enableCsrfValidation = false;
     /**
      * {@inheritdoc}
      */
     public function behaviors()
     {
+        
         return [
             'access' => [
                 'class' => AccessControl::className(),
