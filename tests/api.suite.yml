@@ -2,9 +2,9 @@ class_name: ApiTester
 modules:
     enabled:
         - Asserts
-        - ApiHelper
+        - \Helper\ApiHelper
         - REST:
             url: /
-            depends: Yii2
+            depends: PhpBrowser
     config:
-        - Yii2
+        - PhpBrowser
