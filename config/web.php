@@ -1,4 +1,9 @@
 <?php
+
+use yii\web\Request;
+
+$baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
+
 Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
@@ -13,7 +18,7 @@ $config = [
     ],
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'baseUrl'=> $baseUrl,
             'cookieValidationKey' => 'pPHYqgqV56W2lRO9c_wbo8Q17VsweoxN',
         ],
         'cache' => [
@@ -43,14 +48,7 @@ $config = [
             ],
         ],
         'db' => $db,
-        
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        
+        'urlManager' => require(__DIR__ . '/urlManager.php')
     ],
     'params' => $params,
 ];

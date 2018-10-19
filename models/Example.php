@@ -19,6 +19,12 @@ class Example extends Model
     public $phone;
     public $name;
 
+
+    public function __construct($plate = 'A222AA22')
+    {
+        $this->plate = $plate;
+    }
+
     public function rules()
     {
         return [
@@ -42,6 +48,15 @@ class Example extends Model
         if(in_array($this->$attribute, ['Петров'])) {
             $this->addError($attribute, 'Фамилия не должна быть Петров');
         }
+    }
+
+    public function getName()
+    {
+        return 'David';
+    }
+    public function testMethod()
+    {
+        return true;
     }
 
     public function Send($layout = null)

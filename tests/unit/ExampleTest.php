@@ -3,6 +3,7 @@
 use \app\models\Example;
 
 use app\tests\unit\fixtures\UsersFixture;
+use Codeception\Util\Stub;
 use yii\web\ServerErrorHttpException;
 class ExampleTest extends \Codeception\Test\Unit
 {
@@ -63,7 +64,7 @@ class ExampleTest extends \Codeception\Test\Unit
         $this->formClass->stevedore = 1;
         $this->specify('check Validate and Key plate', function() {
             expect($this->formClass->validate())->false();
-            expect($this->formClass->getFirstError('plate'))->equals('Plate cannot be blank.');
+            expect($this->formClass->getFirstError('plate'))->notEquals('Plate cannot be blank.');
         });
     }
 
@@ -111,20 +112,54 @@ class ExampleTest extends \Codeception\Test\Unit
      */
     public function createAndTestSendMethod()
     {
-        $example = $this->getMockBuilder(Example::class)
-                    ->setMethods(['Send'])
-                    ->getMock();
+            $example = Stub::make(Example::class, ['Send' => function() {
+                throw new ServerErrorHttpException();
+            }, 'plate' => 'A111AA11', 'getName' => \Codeception\Stub\Expected::atLeastOnce()
+            ], $this);
 
-        $example->expects($this->once())
-                        ->method('Send')
-                        ->will($this->throwException(new ServerErrorHttpException()));
+            $example->getName();
+
+          //  $example->getName();
+
+            $example1 = Stub::copy($example, ['plate' => 'A333AA34']);
+
+            $example2 = Stub::construct(Example::class, ['A444AA44']);
+
+            expect($example2->plate)->equals('A444AA44');
+
+            expect($example1->plate)->equals('A333AA34');
+
+            expect($example->plate)->equals('A111AA11');
+            
+            expect($example->testMethod())->true();
+
+            Stub::update($example, [
+                'plate' => 'A121AA11'
+            ]);
+
+            expect($example->plate)->equals('A121AA11');
+
+            try {
+                $example->Send();
+            } catch (ServerErrorHttpException $ex) {
+                return;
+            }
+            $this->fail("Expected Exception has not been raised.");
+
+        // $example = $this->getMockBuilder(Example::class)
+        //             ->setMethods(['Send'])
+        //             ->getMock();
+
+        // $example->expects($this->once())
+        //                 ->method('Send')
+        //                 ->will($this->throwException(new ServerErrorHttpException()));
         
-                        try {
-                            $example->Send();
-                        } catch (ServerErrorHttpException $ex) {
-                            return;
-                        }
-                        $this->fail("Expected Exception has not been raised.");
+        //                 try {
+        //                     $example->Send();
+        //                 } catch (ServerErrorHttpException $ex) {
+        //                     return;
+        //                 }
+        //                 $this->fail("Expected Exception has not been raised.");
     }
 
 }

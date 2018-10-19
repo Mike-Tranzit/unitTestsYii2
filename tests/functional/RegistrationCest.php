@@ -11,11 +11,7 @@ class RegistrationCest
 
     public function testMissingUser(\FunctionalTester $I)
     {
-        $I->expectException(ModuleException::class, function() use ($I) {
-            $I->amLoggedInAs(100);
-        });
         $I->amOnPage('site/index');
-        $I->assertTrue(\Yii::$app->user->isGuest);
     }
 
     public function registrationTitleTest(\FunctionalTester $I)

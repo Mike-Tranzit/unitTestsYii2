@@ -1,4 +1,21 @@
 actor: Tester
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - models/*
+            - controllers/*
+            - commands/*
+            - mail/*
+    blacklist:
+        include:
+            - assets/*
+            - config/*
+            - runtime/*
+            - vendor/*
+            - views/*
+            - web/*
+            - tests/*
 paths:
     tests: tests
     log: tests/_output

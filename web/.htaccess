@@ -1,29 +1,6 @@
-DefaultLanguage ru
-AddDefaultCharset windows-1251
-php_value default_charset "windows-1251"
-
-php_flag short_open_tag on
-php_value allow_url_fopen On
-
-php_value error_reporting all
-php_flag  display_errors on
-php_flag session.auto_start 1
-php_value memory_limit 500M
-
-Options +FollowSymLinks
-IndexIgnore */*
-
-DirectoryIndex index.php
-RewriteEngine on
-
-
-
-# if a directory or a file exists, use it directly
+RewriteEngine On RewriteBase /
+ 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# otherwise forward it to index.php
+ 
 RewriteRule . index.php
-
-
-Redirect 301 /rostov /cpanel/forum/topic?id=7#top

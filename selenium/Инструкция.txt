@@ -1,0 +1,17 @@
+1) устанавлеваем Codeception 
+composer require codeception/codeception --dev
+2) проверить версию php командой php -v
+3)скачать файл codecept.phar 
+для 7.х http://codeception.com/thanks
+для 5.х http://codeception.com/thanks_php5
+4) запустить команду 
+php codecept.phar bootstrap
+5) Заменить файлы каторые вы скачале по ссылке из писания. Распокавать и запустить сервер силениум
+В командной строке
+cd C:\xampp\selenium
+./run_selenium.bat
+
+Заруск тестов
+php codecept.phar run tests/acceptance/UrlCest.php -- это пример
+
+УДАЧИ!!!
