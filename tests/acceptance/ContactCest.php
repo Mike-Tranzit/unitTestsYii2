@@ -1,7 +1,8 @@
 <?php
 
-use yii\helpers\Url as Url;
 
+
+use Page\ContactPage as Page;
 class ContactCest
 {
     public function _before(\AcceptanceTester $I)
@@ -38,34 +39,19 @@ class ContactCest
 
 // codecept_debug($I->grabTextFrom('#name'));
 // $I->dontSeeInCurrentUrl('/users/');
+//  $I->am('Михаил');
+//  $I->amOnPage(Url::toRoute('/site/contact'));
 
-        $I->amOnPage(Url::toRoute('/site/contact'));
 
-        $I->seeCurrentUrlEquals('/unitTestYii2/site/contact');
-        $I->seeNumberOfElements(['css' => 'button.btn-primary'], 1);
+        $page = new Page($I);
+        $page->openAndSetPage('/contact');
+        $page->checkNumberOfElement();
 
-        $I->wantTo('ѕроверить форму добавлени€ контакта');
+        $I->wantTo('Проверить форму добавления контакта');
 
-        $I->wait(1);
-        $I->fillField('#contactform-name', "");
-        $I->fillField('#contactform-email', 'tester@example.com');
+        $page->waitFormVisibleSetParamsAndCheck();
+        $page->submitAndCheckVisibleForm();
 
-        $I->wait(1);
-        $I->see("Name cannot be blank.");
-        $I->fillField('#contactform-name', $I->grabValueFrom('#contactform-email'));
-        
-        $I->fillField('#contactform-subject', 'test subject');
-
-        $I->wait(1);
-        $I->dontSee("Name cannot be blank.");
-
-        $I->fillField('#contactform-body', 'test content');
-        $I->fillField('#contactform-verifycode', 'testme');
-
-        $I->click('contact-button');
-        $I->wait(1); // wait for button to be clicked
-
-        $I->dontSeeElement('#contact-form');
         $I->see('Thank you for contacting us. We will respond to you as soon as possible.');
     }
 
@@ -74,6 +60,4 @@ class ContactCest
         $I->wantTo('ensure that contact page works');
         $I->see('Contact', 'h1');
     }
-
-    
 }

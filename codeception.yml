@@ -7,15 +7,6 @@ coverage:
             - controllers/*
             - commands/*
             - mail/*
-    blacklist:
-        include:
-            - assets/*
-            - config/*
-            - runtime/*
-            - vendor/*
-            - views/*
-            - web/*
-            - tests/*
 paths:
     tests: tests
     log: tests/_output
@@ -29,6 +20,7 @@ modules:
     config:
         Yii2:
             configFile: 'config/test.php'
+            entryScript: index-test.php
             cleanup: false
 
 # To enable code coverage:
