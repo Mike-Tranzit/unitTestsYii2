@@ -10,6 +10,9 @@ use app\models\{ LoginForm, ContactForm, Usernames};
 
 class SiteController extends Controller
 {
+
+    public $load = false;
+
     /**
      * {@inheritdoc}
      */
@@ -60,6 +63,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->load = true;
+        
         return $this->render('index');
     }
 
@@ -70,7 +75,14 @@ class SiteController extends Controller
      */
     public function actionExample()
     {
-        phpinfo();
+        $ex = new Example();
+        // $ex->on(Example::TEST1, ['\app\models\Example', 'foo'], ['123'=>123]);
+        // $ex->trigger(Example::TEST1);
+
+        echo $ex->test();
+        echo $ex->testing();
+        die();
+
         $model = new Usernames();
         if($model->load(Yii::$app->request->post())){
             //var_dump(\Yii::$app->request->post());
@@ -81,7 +93,7 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
+    /** 
      * Login action.
      *
      * @return Response|string
@@ -98,6 +110,7 @@ class SiteController extends Controller
         }
         
         $model->password = '';
+
         return $this->render('login', [
             'model' => $model,
         ]);
