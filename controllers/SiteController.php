@@ -4,12 +4,9 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\web\Response;
+use yii\web\{Controller, Response};
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
-use app\models\base\Usernames;
+use app\models\{ LoginForm, ContactForm, Usernames};
 
 class SiteController extends Controller
 {
@@ -73,7 +70,7 @@ class SiteController extends Controller
      */
     public function actionExample()
     {
-
+        phpinfo();
         $model = new Usernames();
         if($model->load(Yii::$app->request->post())){
             //var_dump(\Yii::$app->request->post());
