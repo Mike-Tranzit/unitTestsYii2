@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\web\ServerErrorHttpException;
 
+use app\components\ExampleBehavior;
 /**
  * 
  * @property plate
@@ -17,12 +18,35 @@ class Example extends Model
     public $stevedore;
     public $trader;
     public $phone;
+    public $local = 'Такое имя уже существует';
     public $name;
+    const TEST = 'test';
+    const TEST1 = 'test1';
 
 
     public function __construct($plate = 'A222AA22')
     {
         $this->plate = $plate;
+    }
+
+    public static function foo($event)
+    {
+        print_r($event->data);die();
+    
+    }
+    public function test()
+    {
+        $this->trigger(self::TEST);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => ExampleBehavior::className(),
+                'nameLocal' => 'Hellow'
+            ]
+        ];
     }
 
     public function rules()
