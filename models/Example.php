@@ -5,7 +5,6 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\web\ServerErrorHttpException;
-
 use app\components\ExampleBehavior;
 /**
  * 
@@ -22,6 +21,7 @@ class Example extends Model
     public $name;
     const TEST = 'test';
     const TEST1 = 'test1';
+    public static $foo = "John";
 
 
     public function __construct($plate = 'A222AA22')
@@ -34,6 +34,12 @@ class Example extends Model
         print_r($event->data);die();
     
     }
+
+    public static function getFoo()
+    {
+        return get_called_class()::$foo;
+    }
+
     public function test()
     {
         $this->trigger(self::TEST);
