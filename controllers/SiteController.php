@@ -65,8 +65,7 @@ class SiteController extends Controller
     {
         $this->load = true;
        // echo \app\models\AdvancedExample::getFoo(); die();
-        $m = new \app\models\FabricExample();
-        $m->run();
+        new \app\models\FabricExample::run1();
         die();
         return $this->render('index');
     }

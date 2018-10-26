@@ -4,7 +4,7 @@ namespace app\models;
 
 class FabricExample
 {
-    public function run()
+    public static function run1()
     {
         $m = new DorFabric(100, 200);
         echo $m->getW();
