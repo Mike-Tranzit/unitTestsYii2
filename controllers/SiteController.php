@@ -6,7 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\{Controller, Response};
 use yii\filters\VerbFilter;
-use app\models\{ LoginForm, ContactForm, Usernames, Example, AdvancedExample };
+use app\models\{ LoginForm, ContactForm, Usernames, Example, AdvancedExample, DorFabric };
 
 class SiteController extends Controller
 {
@@ -64,9 +64,6 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->load = true;
-       // echo \app\models\AdvancedExample::getFoo(); die();
-        new \app\models\FabricExample::run1();
-        die();
         return $this->render('index');
     }
 
