@@ -72,7 +72,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionExample()
+    public function actionExample11111111111111111111111111111111111()
     {
         $ex = new Example();
         // $ex->on(Example::TEST1, ['\app\models\Example', 'foo'], ['123'=>123]);
