@@ -82,7 +82,8 @@ class SiteController extends Controller
         echo $ex->testing();
         die();
 
-        $model = new Usernames();
+        $model = new Usernames(); // Тестовый комментарий
+        
         if($model->load(Yii::$app->request->post())){
             //var_dump(\Yii::$app->request->post());
             //var_dump($model);

@@ -40,7 +40,7 @@ class Dor
 
     public function extr($x)
     {
-        $global = 'Zanyato';
+        $global = 'Zanyato'; // Тестовый комментарий
         extract($x, EXTR_PREFIX_SAME, "wddx");
         echo $test;
         echo $wddx_global;
