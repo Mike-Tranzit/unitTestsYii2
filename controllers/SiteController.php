@@ -87,6 +87,7 @@ class SiteController extends Controller
                                 // Тестовый комментарий fix 60
                                 // Тестовый комментарий fix 66
                                 // Тестовый комментарий fix 67
+                                // Тестовый комментарий fix 68
         if($model->load(Yii::$app->request->post())) {
             //var_dump(\Yii::$app->request->post());
             //var_dump($model);
