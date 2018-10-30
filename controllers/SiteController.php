@@ -83,8 +83,9 @@ class SiteController extends Controller
         die();
 
         $model = new Usernames(); // Тестовый комментарий
-        
-        if($model->load(Yii::$app->request->post())){
+                                // Тестовый комментарий fix 55
+                                // Тестовый комментарий fix 60
+        if($model->load(Yii::$app->request->post())) {
             //var_dump(\Yii::$app->request->post());
             //var_dump($model);
         }
