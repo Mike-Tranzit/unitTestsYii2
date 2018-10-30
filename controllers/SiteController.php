@@ -87,6 +87,7 @@ class SiteController extends Controller
         $model = new Usernames(); // Тестовый комментарий
                                 // Тестовый комментарий 1
                                 // Тестовый комментарий 2
+                                // Тестовый комментарий 3
         if($model->load(Yii::$app->request->post())) {
             //var_dump(\Yii::$app->request->post());
             //var_dump($model);
