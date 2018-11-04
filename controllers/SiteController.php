@@ -76,7 +76,7 @@ class SiteController extends Controller
      */
     public function actionExample()
     {
-        $ex = new Example(); // fix fix fix fix
+        $ex = new Example();
         // $ex->on(Example::TEST1, ['\app\models\Example', 'foo'], ['123'=>123]);
         // $ex->trigger(Example::TEST1);
 
